@@ -1,0 +1,170 @@
+:root{      
+			--bg:#0b1220;     
+			--panel:#0f1a33;     
+			--text:#e8eefc;      
+			--muted:rgba(232,238,252,.75);      
+			--accent:#6aa6ff;      
+			--border:rgba(255,255,255,.12);      
+			--radius:14px;      
+			--shadow: 0 10px 30px rgba(0,0,0,.35);      
+			--focus: 0 0 0 3px rgba(106,166,255,.35);    
+			}    
+		* { box-sizing: border-box; }    
+			body{      
+				margin:0;      
+				font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;      
+				background: linear-gradient(180deg, #070b14, #0b1220 45%, #070b14);      
+				color: var(--text);      
+				min-height: 100vh;    
+				}    
+				/* ===== NAV ===== */    
+			.nav{      
+				position: sticky;      
+				top: 0;      
+				z-index: 50;      
+				background: rgba(11,18,32,.72);      
+				backdrop-filter: blur(10px);      
+				border-bottom: 1px solid var(--border);    
+				}    
+			.nav__inner{      
+				max-width: 1100px;     
+				margin: 0 auto;      
+				padding: 0 16px;      
+				height: 64px;      
+				display: flex;      
+				align-items: center;      
+				justify-content: space-between;      
+				gap: 16px;    
+				}    
+			.brand{      
+				display:flex;      
+				align-items:center;      
+				gap: 10px;      
+				text-decoration: none;      
+				color: var(--text);      
+				font-weight: 700;      
+				letter-spacing: .2px;    
+				} 
+			
+			/* Mobile toggle */    
+			.nav__toggle{      
+				appearance: none;      
+				border: 1px solid var(--border);      
+				background: rgba(15,26,51,.5);      
+				color: var(--text);      
+				border-radius: 12px;      
+				padding: 10px 12px;      
+				cursor: pointer;      
+				display: inline-flex;      
+				align-items: center;      
+				gap: 10px;      
+				font-weight: 600;    
+				}    
+			.nav__toggle:focus-visible{      
+				outline: none;      
+				box-shadow: var(--focus);   
+				}    
+			.hamburger{      
+				width: 20px; 
+				height: 14px; 
+				position: relative;      
+				display: inline-block;    
+				}    
+			.hamburger span{      
+				position:absolute;      
+				left:0; right:0;      
+				height:2px;      
+				background: var(--text);      
+				border-radius: 2px;      
+				transition: transform .2s ease, top .2s ease, opacity .2s ease;    
+				}    
+			.hamburger span:nth-child(1){
+			 	top:0; 
+				}    
+			.hamburger span:nth-child(2){ 
+				top:6px; 
+				}    
+			.hamburger span:nth-child(3){ 
+				top:12px; }    
+			/* The checkbox controls mobile open/close */    
+			.nav__checkbox{      
+				position: absolute;      
+				width: 1px; height: 1px;      
+				margin: -1px; padding: 0;      
+				overflow: hidden; 
+				clip: rect(0,0,0,0);      
+				border: 0;    
+				}    
+			/* Desktop menu */    
+			.nav__links{      
+				display: flex;      
+				gap: 18px;      
+				align-items: center;    
+				}    
+			.nav__links a{      
+				color: var(--muted);      
+				text-decoration: none;      
+				font-weight: 600;      
+				padding: 10px 6px;      
+				border-radius: 10px;      
+				transition: color .15s ease, background .15s ease;    
+				}    
+			.nav__links a:hover{      
+				color: var(--text);      
+				background: rgba(255,255,255,.06);    
+				}   
+			/* Mobile layout */    
+			@media (max-width: 800px){
+			      .nav__inner{        
+				  	height: auto;        
+					padding: 14px 16px;        
+					align-items: flex-start;      
+					}      
+				.nav__links{        
+			/* hidden by default in mobile */        
+					display: grid;        
+					gap: 10px;        
+					width: 100%;        
+					padding: 14px;        
+					margin-top: 12px;        
+					border: 1px solid var(--border);        
+					border-radius: var(--radius);        
+					background: rgba(15,26,51,.65);        
+					box-shadow: var(--shadow);        
+					transform-origin: top;        
+					transform: scaleY(0.98);        
+					opacity: 0;        
+					max-height: 0;        
+					overflow: hidden;        
+					transition: max-height .25s ease, opacity .2s ease, transform .2s ease;      
+					}      
+			/* When checked: open menu */      
+				.nav__checkbox:checked ~ .nav__inner .nav__links{
+				    max-height: 520px;        
+					opacity: 1;        
+					transform: scaleY(1);      
+					}      
+			/* Toggle icon to X */      
+				.nav__checkbox:checked ~ 
+				.nav__inner .nav__toggle 
+				.hamburger span:nth-child(1){        
+					top: 6px;        
+					transform: rotate(45deg);      
+					}      
+				.nav__checkbox:checked ~ 
+				.nav__inner .nav__toggle 
+				.hamburger span:nth-child(2){
+				        opacity: 0;      
+						}      
+				.nav__checkbox:checked ~ 
+				.nav__inner .nav__toggle 
+				.hamburger span:nth-child(3){
+				        top: 6px;        
+						transform: rotate(-45deg);      
+						}    
+				}    
+				/* Desktop: hide toggle */    
+				@media (min-width: 801px){ 
+				     .nav__toggle { display:none; 
+					 }     
+				 .nav__checkbox { display:none; }    }  
