@@ -34,7 +34,7 @@
 				display: flex;      
 				align-items: center;      
 				justify-content: space-between;      
-				gap: 16px;    
+				gap: 12px;    
 				}    
 			.brand{      
 				display:flex;      
@@ -44,7 +44,16 @@
 				color: var(--text);      
 				font-weight: 700;      
 				letter-spacing: .2px;    
-				} 
+				}
+				
+			.nav__logo{  
+				display: block;  
+				width: 44px;
+				/* adjust as you like */  
+				height: 44px;    
+				/* adjust as you like */  
+				object-fit: contain;
+			}
 			
 			/* Mobile toggle */    
 			.nav__toggle{      
@@ -167,4 +176,14 @@
 				@media (min-width: 801px){ 
 				     .nav__toggle { display:none; 
 					 }     
-				 .nav__checkbox { display:none; }    }  
+				 .nav__checkbox { display:none; } 
+				 } 
+
+			.menu-item{      
+				/* position: sticky;      
+				top: 0;      
+				z-index: 50;      
+				background: rgba(11,18,32,.72);      
+				backdrop-filter: blur(10px);      
+				border-bottom: 1px solid var(--border); */    
+				}				 
